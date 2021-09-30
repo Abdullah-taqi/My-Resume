@@ -1,0 +1,654 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+/* =============== Variable CSS ================ */
+:root {
+  --header-height: 3rem;
+
+  /* ========= colours ========== */
+  --title-color: #0b0a0a;
+  --text-color: #403a3a;
+  --text-color-light: #707070;
+  --container-color: #fafafa;
+  --container-color-alt: #f0efef;
+  --body-color: #fcfcfc;
+
+  /*  ========== Font and typography =========== */
+
+  --body-font: "Poppins" sans-serif;
+  --h1-font-size: 1.5rem;
+  --h2-font-size: 1.25rem;
+  --h3-font-size: 1rem;
+  --normal-font-size: 1rem;
+  --small-font-size: 0.938rem;
+  --small-font-size: 0.875rem;
+  --smaller-font-size: 0.813rem;
+
+  /* ====== Font weight ====== */
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /* ======== Margins ======= */
+  --mb-1: 0.5rem;
+  --mb-2: 0.1rem;
+  --mb-3: 1.5rem;
+
+  /* ======= z-index ====== */
+  --z-tooltip: 10;
+  --z-fixed: 100;
+}
+
+/* ======== BASE ======== */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ======================== Font size variables to scale cv ================== */
+body.scale-cv {
+  --h1-font-size: 0.938rem;
+  --h2-font-size: 0.938rem;
+  --h3-font-size: 0.875rem;
+  --normal-font-size: 0.813rem;
+  --small-font-size: 0.75rem;
+  --small-font-size: 0.688rem;
+}
+
+/* ==================== Generate pdf button ======================= */
+.generate-pdf {
+  display: none;
+  position: absolute;
+  top: 2.2rem;
+  left: 0;
+  font-size: 1.2rem;
+  color: var(--text-color);
+  cursor: pointer;
+}
+.generate-pdf:hover {
+  color: var(--text-color);
+}
+
+/* ===================== Variables Dark theme======================= */
+body.dark-theme {
+  --title-color: #f2f2f2;
+  --text-color: #bfbfbf;
+  --container-color: #212121;
+  --container-color-alt: #181616;
+  --body-color: #2b2b2b;
+}
+
+/* ========================Button Dark/Light ========================*/
+.change-theme {
+  position: absolute;
+  right: 0;
+  top: 2.2rem;
+  display: flex;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.change-theme:hover {
+  color: var(--title-color);
+}
+
+/* ===== Change modifies class to reduce size and print on A4 sheet ===== */
+.scale-cv .change-theme,
+.scale-cv .generate-pdf,
+.scale-cv .home_button-movil {
+  display: none;
+}
+.scale-cv .languages span {
+  font-size: 1rem;
+}
+
+/* .scale-cv .bd-container {
+  max-width: 595px;
+} */
+/*
+.scale-cv .section {
+  padding: 1.5rem 0 0.8rem;
+}
+.scale-cv .section-title {
+  margin-bottom: 0.75rem;
+}
+.scale-cv .resume_left,
+.scale-cv .resume_right {
+  padding: 0 1rem;
+}*/
+
+.scale-cv .home_img {
+  width: 122px;
+  height: 122px;
+}
+
+.scale-cv h1 {
+  font-size: 1.51rem;
+}
+.scale-cv h3 {
+  font-size: 1.024rem;
+}
+/* .scale-cv .home_container {
+  gap: 0.25rem;
+}
+.scale-cv .home_data {
+  gap: 0.25rem;
+} */
+.scale-cv .home_address,
+.scale-cv .social_container {
+  gap: 0.75rem;
+}
+
+.scale-cv .home_icon,
+.scale-cv .social_icon,
+.scale-cv .interests_icon {
+  font-size: 1rem;
+}
+
+/* .scale-cv .education_container,
+.scale-cv .experience_container,
+.scale-cv .certificate_container {
+  gap: 1rem;
+}
+.scale-cv .education_time,
+.scale-cv .experience_time {
+  padding-right: 0.5rem;
+} */
+.scale-cv .education_rounder,
+.scale-cv .experience_rounder {
+  width: 11px;
+  height: 11px;
+  margin-top: 0.22rem;
+}
+.scale-cv .education_line,
+.scale-cv .experience_line {
+  width: 1px;
+  height: 110%;
+  transform: translate(5px, 0);
+}
+.scale-cv .education_data,
+.scale-cv .experience_line {
+  gap: 0.25rem;
+}
+.scale-cv .education_data,
+.scale-cv .experience_data {
+  gap: 0.25rem;
+}
+body {
+  margin: 0 0 var(--header-height) 0;
+  padding: 0;
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  font-family: "Source Sans Pro", sans-serif;
+}
+h1,
+h2,
+h3,
+ul,
+p {
+  margin: 0;
+}
+h1,
+h2,
+h3 {
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+}
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+/* ======== Class CSS======== */
+.section {
+  padding: 1.5rem 0;
+}
+
+.section-title {
+  font-size: var(--h2-font-size);
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.35rem;
+  text-align: center;
+  margin-bottom: var(--mb-3);
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+/* ================== Layout =================== */
+.bd-container {
+  max-width: 968px;
+  width: calc(100% - 3rem);
+  margin-left: var(--mb-3);
+  margin-right: var(--mb-3);
+}
+
+.bd-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* smith */
+.i-header {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: var(--z-index);
+  background-color: var(--container-color-alt);
+  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+/* ============== NAV ============= */
+.nav {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* full menu */
+@media screen and (max-width: 968px) {
+  .nav_menu {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    padding: 2rem 1.5rem;
+    background-color: var(--body-color);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem 1rem 0 0;
+    z-index: var(--z-fixed);
+    transition: 0.2s;
+  }
+}
+
+.nav_logo {
+  color: var(--title-color);
+  font-weight: var(--font-media);
+}
+.nav_toggle {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.nav_item {
+  text-align: center;
+}
+.nav_list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.nav_link {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--smaller-font-size);
+  color: var(--text-color-light);
+  font-weight: var(--font-medium);
+}
+
+.nav_link:hover {
+  color: var(--title-color);
+}
+
+.nav_icon {
+  font-size: 1.2rem;
+  margin-bottom: var(--mb-1);
+}
+
+/*==================================== Show menu =================================*/
+.show-menu {
+  bottom: var(--header-height);
+}
+
+.active-link {
+  color: var(--title-color);
+}
+
+/*====================================== Home =========================================== */
+.home {
+  position: relative;
+}
+.home_container {
+  gap: 3rem;
+}
+.home_data {
+  gap: 0.5rem;
+  text-align: center;
+}
+.home_img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  justify-self: center;
+  margin-bottom: var(--mb-1);
+}
+.home_title {
+  font-size: var(--h1-font-size);
+  font-family: "Source Sans Pro", sans-serif;
+  margin-bottom: -0.4rem;
+}
+.home_profession {
+  font-size: var(--normal-font-size);
+  margin-bottom: var(--mb-1);
+  font-family: "Source Sans Pro", sans-serif;
+}
+.home_address {
+  gap: 1rem;
+  z-index: -10;
+}
+
+.home_information {
+  display: flex;
+  align-items: center;
+  font-size: var(--small-font-size);
+}
+
+.home_icon {
+  font-size: 1rem;
+  margin-right: 0.25rem;
+}
+.home_icon span {
+  margin-left: 0.5rem;
+  font-family: "Source Sans Pro", sans-serif;
+}
+.home_button-movil {
+  display: inline-block;
+  border: 2px solid var(--text-color);
+  color: var(--title-color);
+  padding: 1rem 2rem;
+  border-radius: 0.25rem;
+  transition: 0.3s;
+  font-weight: var(--font-medium);
+  margin-top: var(--mb-3);
+  font-family: "Source Sans Pro", sans-serif;
+}
+.home_button-movil:hover {
+  background-color: var(--text-color);
+  color: var(--container-color);
+}
+
+/*=========================================== Social========================================= */
+
+.social_container {
+  grid-template-columns: max-content;
+  gap: 1rem;
+}
+
+.social_link {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--smaller-font-size);
+  color: var(--text-color);
+}
+
+.social_link:hover {
+  color: var(--title-color);
+}
+.social_icon {
+  font-size: 1.2rem;
+  margin-right: 0.25rem;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+/* ========================================= Profile ==========================================*/
+.profile_description {
+  text-align: center;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+/* =======================================Education and Experience================================= */
+
+.education_content,
+.experience_content {
+  display: flex;
+}
+
+.education_time,
+.experience_time {
+  padding-right: 1rem;
+}
+
+.education_rounder,
+.experience_rounder {
+  position: relative;
+  display: block;
+  width: 12px;
+  height: 12px;
+  background-color: var(--text-color-light);
+  border-radius: 50%;
+  margin-top: 0.25rem;
+}
+
+.education_line {
+  display: block;
+  width: 2px;
+  height: 82%;
+  /* height: 110% */
+  background-color: var(--text-color-light);
+  transform: translate(5px, 0);
+  z-index: -10;
+}
+.experience_line {
+  display: block;
+  width: 2px;
+  height: 115%;
+  background-color: var(--text-color-light);
+  transform: translate(5px, 0);
+  z-index: -10;
+}
+.education_data,
+.experience_data {
+  gap: 1rem;
+}
+
+.education_title,
+.experience_title {
+  font-size: var(--h3-font-size);
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.education_studies,
+.experience_company {
+  font-size: var(--smaller-font-size);
+  color: var(--title-color);
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.education_year {
+  font-size: var(--smaller-font-size);
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+/*  ===============================Skills and Languages=============================== */
+
+.skills_content,
+.languages_container {
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: var(--mb-2);
+}
+.languages_content {
+  display: flex;
+  justify-content: center;
+}
+.languages_content span {
+  font-size: 1.2rem;
+}
+.languages_icon {
+  font-size: 1.2rem;
+}
+
+.skills_content {
+  gap: 0;
+}
+
+.skills_name {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--mb-3);
+  font-family: "Source Sans Pro", sans-serif;
+}
+.skills_circle,
+.languages_circle {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background-color: var(--text-color);
+  border-radius: 50%;
+  margin-right: 0.75rem;
+  z-index: -10;
+}
+/*========================  CERTIFICATES ====================== */
+
+.certificate_title {
+  font-size: var(--h3-font-size);
+  margin-bottom: var(--mb-1);
+}
+
+/* ========================== REFERENCES ========================= */
+.references_content {
+  gap: 0.25rem;
+}
+
+.reference_subtitle {
+  color: var(--text-color-light);
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.reference_subtitle,
+.reference_contact {
+  font-size: var(--smaller-font-size);
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.references_title {
+  font-size: var(--h3-font-size);
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+/* ========= INTERESTS========= */
+.interests_container {
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: var(--mb-2);
+}
+.interests_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.interests_icon {
+  font-size: 1.5rem;
+  color: var(--text-color-light);
+  margin-bottom: 0.25rem;
+}
+
+/* ==================Scroll top============== */
+
+.scrolltop {
+  position: fixed;
+  right: 1rem;
+  bottom: -20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3rem;
+  background-color: var(--container-color-alt);
+  border: 0.4rem;
+  z-index: var(--z-tooltip);
+  transition: 0.4s;
+  border-radius: 50%;
+  visibility: hidden;
+}
+
+.scrolltop_icon {
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
+
+.show-scroll {
+  visibility: visible;
+  bottom: 5rem;
+}
+
+/* ================ MEDIA QUERIES ============== */
+@media screen and (max-width: 320px) {
+  .nav_list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 0.5rem;
+  }
+}
+
+@media screen and (min-width: 968px) {
+  body {
+    margin: 3rem 0;
+  }
+
+  .bd-container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .i-header,
+  .scrolltop {
+    display: none;
+  }
+  .resume {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    background-color: var(--container-color);
+    box-shadow: 0 0 8px rgba(13, 12, 12, 0.15);
+  }
+
+  .resume_left {
+    background-color: var(--container-color-alt);
+  }
+
+  .resume_left,
+  .resume_right {
+    padding: 0 1.5rem;
+  }
+
+  .generate-pdf {
+    display: inline-block;
+  }
+
+  .section-title,
+  .profile_description {
+    text-align: initial;
+  }
+
+  .skills_data {
+    padding: 1.5rem;
+  }
+  .skills_data_bg {
+    margin: 10px;
+  }
+
+  .home_container {
+    gap: 1.5rem;
+  }
+
+  .references_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .home_button-movil {
+    display: none;
+  }
+}
